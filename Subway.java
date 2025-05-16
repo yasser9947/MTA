@@ -18,25 +18,29 @@ public class Subway {
         startPath = new ArrayList<>();
         endPath = new ArrayList<>();
         int index;
-        if (startLine.equalsIgnoreCase("n")) {
-            index = lineN.indexOf(startStation) + 1 == lineN.size() ? lineN.indexOf(startStation) - 1 : lineN.indexOf(startStation) + 1;
-            saveStartPath(lineN, lineN.get(index));
-        } else if (startLine.equalsIgnoreCase("l")) {
-            index = lineL.indexOf(startStation) + 1 == lineL.size() ? lineL.indexOf(startStation) - 1 : lineL.indexOf(startStation) + 1;
-            saveStartPath(lineL, lineL.get(index));
-        } else if (startLine.equalsIgnoreCase("6")) {
-            index = line6.indexOf(startStation) + 1 == line6.size() ? line6.indexOf(startStation) - 1 : line6.indexOf(startStation) + 1;
-            saveStartPath(line6, line6.get(index));
+        if (!startLine.equalsIgnoreCase(endLine)) {
+            if (startLine.equalsIgnoreCase("n")) {
+                index = lineN.indexOf(startStation) + 1 == lineN.size() ? lineN.indexOf(startStation) - 1 : lineN.indexOf(startStation) + 1;
+                saveStartPath(lineN, lineN.get(index));
+            } else if (startLine.equalsIgnoreCase("l")) {
+                index = lineL.indexOf(startStation) + 1 == lineL.size() ? lineL.indexOf(startStation) - 1 : lineL.indexOf(startStation) + 1;
+                saveStartPath(lineL, lineL.get(index));
+            } else if (startLine.equalsIgnoreCase("6")) {
+                index = line6.indexOf(startStation) + 1 == line6.size() ? line6.indexOf(startStation) - 1 : line6.indexOf(startStation) + 1;
+                saveStartPath(line6, line6.get(index));
+            }
+            if (endLine.equalsIgnoreCase("n")) {
+                saveEndPath(lineN, endStation);
+            } else if (endLine.equalsIgnoreCase("l")) {
+                saveEndPath(lineL, endStation);
+            } else if (endLine.equalsIgnoreCase("6")) {
+                saveEndPath(line6, endStation);
+            }
+            Collections.reverse(endPath);
+            System.out.printf("You must travel through the following stops on the %s line: %s \nChange at Union Square.\nYour journey continues through the following stops: %s \n%s stops in total.%n", startLine.toUpperCase(), startPath, endPath, startPath.size() + endPath.size());
         }
-        if (endLine.equalsIgnoreCase("n")) {
-            saveEndPath(lineN, endStation);
-        } else if (endLine.equalsIgnoreCase("l")) {
-            saveEndPath(lineL, endStation);
-        } else if (endLine.equalsIgnoreCase("6")) {
-            saveEndPath(line6, endStation);
-        }
-        Collections.reverse(endPath);
-        System.out.printf("You must travel through the following stops on the %s line: %s \nChange at Union Square.\nYour journey continues through the following stops: %s \n%s stops in total.%n", startLine.toUpperCase(), startPath, endPath, startPath.size() + endPath.size());
+        else
+            System.out.println("Same station");
     }
 
 
