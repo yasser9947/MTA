@@ -31,7 +31,7 @@ planTrip("N", "Times Square", "6", "33rd"); // This is only a suggested function
 - Tell the user the number of stops AND the stops IN ORDER that they will pass through or change at.
 
 
-###solution:
+### solution:
 
 ```
 import java.util.Map;
