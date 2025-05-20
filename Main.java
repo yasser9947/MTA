@@ -11,7 +11,7 @@ public class Main {
         while (true){
             System.out.print("Enter the Line you're getting on at (N, L, 6): ");
             sourceLine = scanner.nextLine().toUpperCase();
-            //check if lines' names exist
+            //check if lines names exist
             if(!Subway.subwayLines.containsKey(sourceLine)){
                 System.out.println("One or both lines entered does not exist!");
                 continue;
